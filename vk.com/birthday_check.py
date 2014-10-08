@@ -52,7 +52,7 @@ def getName(user_id):
 def check(user_id, name, year=0, month=0, day=0):
 	count = 0
 	while count < MAX_REQUEST_ATTEMPTS:
-		print(count)
+		#print(count)
 		try:
 			conn = http.client.HTTPConnection("vk.com", 80, timeout=10)
 			request = {'c[section]':'people', 'c[q]':name, 'c[name]': 1}
@@ -63,7 +63,7 @@ def check(user_id, name, year=0, month=0, day=0):
 			if day > 0:
 				request['c[bday]'] = day
 			conn.request("POST","/al_search.php", urllib.parse.urlencode(request))
-			print(urllib.parse.urlencode(request))
+			#print(urllib.parse.urlencode(request))
 			
 			r1 = conn.getresponse()
 			if r1.status == 200:
